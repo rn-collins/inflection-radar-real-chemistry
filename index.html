@@ -7,18 +7,18 @@
     <title>Inflection Radar / Real Chemistry Pilot 1</title>
     <style>
       :root {
-        --bg: #0f1010;
-        --paper: #f7f4ec;
-        --ink: #121212;
-        --muted: #6d6a60;
-        --lime: #b7ff2a;
-        --acid: #d7ff64;
-        --cyan: #00b7d8;
-        --blue: #163bff;
-        --rose: #ff6b6b;
-        --line: #dfd8ca;
+        --bg: #14242b;
+        --paper: #f7f4ee;
+        --ink: #14242b;
+        --muted: #5c6b70;
+        --lime: #a8e6d6;
+        --acid: #e8efed;
+        --cyan: #006b67;
+        --blue: #006b67;
+        --rose: #f26b5e;
+        --line: #c8d6d2;
         --white: #fff;
-        --tan: #e9e4d7;
+        --tan: #e8efed;
       }
       * {
         box-sizing: border-box;
@@ -40,13 +40,7 @@
       }
       .hero {
         min-height: 92vh;
-        background:
-          radial-gradient(
-            circle at 75% 35%,
-            rgba(183, 255, 42, 0.16),
-            transparent 30%
-          ),
-          linear-gradient(135deg, #0b0b0b, #171918 60%, #0b0b0b);
+        background: var(--ink);
         color: var(--paper);
         display: grid;
         grid-template-columns: 1.1fr 0.9fr;
@@ -70,7 +64,7 @@
       .hero p {
         font-size: 1.2rem;
         line-height: 1.6;
-        color: #d8d2c4;
+        color: #d9e4e1;
         max-width: 720px;
       }
       .cta {
@@ -81,7 +75,7 @@
       }
       .btn {
         border: none;
-        border-radius: 999px;
+        border-radius: 3px;
         background: var(--lime);
         padding: 12px 20px;
         color: #111;
@@ -104,7 +98,7 @@
         height: 100%;
       }
       .mesh line {
-        stroke: rgba(183, 255, 42, 0.55);
+        stroke: rgba(168, 230, 214, 0.58);
         stroke-width: 2;
       }
       .mesh circle {
@@ -130,13 +124,14 @@
         color: var(--ink);
         font-weight: 900;
         padding: 8px 13px;
-        border-radius: 999px;
-        background: #fff;
-        border: 1px solid #eee;
+        border-radius: 2px;
+        background: transparent;
+        border: 1px solid transparent;
       }
       .nav a:hover,
       .nav a.active {
-        background: var(--lime);
+        background: var(--ink);
+        color: var(--paper);
       }
       section {
         padding: 64px 7vw;
@@ -173,14 +168,15 @@
       }
       .card {
         background: #fff;
-        border-radius: 22px;
+        border-radius: 4px;
         padding: 22px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-        border-top: 6px solid var(--lime);
+        box-shadow: none;
+        border: 1px solid var(--line);
+        border-top: 5px solid var(--cyan);
         min-height: 150px;
       }
       .card.cyan {
-        border-top-color: var(--cyan);
+        border-top-color: var(--teal, #006b67);
       }
       .card.acid {
         border-top-color: var(--acid);
@@ -190,7 +186,7 @@
       }
       .tag {
         display: inline-block;
-        border-radius: 999px;
+        border-radius: 2px;
         background: #eee8dc;
         padding: 6px 10px;
         font-size: 0.7rem;
@@ -215,7 +211,7 @@
       }
       .metric {
         background: var(--lime);
-        border-radius: 24px;
+        border-radius: 4px;
         padding: 24px;
         text-align: center;
       }
@@ -244,7 +240,7 @@
       }
       .tab {
         border: 1px solid var(--line);
-        border-radius: 999px;
+        border-radius: 2px;
         background: #fff;
         padding: 10px 14px;
         font-weight: 900;
