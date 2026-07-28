@@ -1,0 +1,47 @@
+name: Materialize downloadable assets
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-assets.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Download report and meeting deck from the current Vercel deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          curl --fail --location --retry 3 \
+            'https://inflection-radar-real-chemistry.vercel.app/assets/full-report.pdf?_vercel_share=i3u4aAxMItwpkLGe02K3XlYfk2zQyX9Y' \
+            --output assets/full-report.pdf
+          curl --fail --location --retry 3 \
+            'https://inflection-radar-real-chemistry.vercel.app/assets/meeting-deck.pptx?_vercel_share=i3u4aAxMItwpkLGe02K3XlYfk2zQyX9Y' \
+            --output assets/meeting-deck.pptx
+          test -s assets/full-report.pdf
+          test -s assets/meeting-deck.pptx
+          file assets/full-report.pdf assets/meeting-deck.pptx
+
+      - name: Commit downloadable assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/full-report.pdf assets/meeting-deck.pptx
+          if git diff --cached --quiet; then
+            echo 'Assets already current.'
+          else
+            git commit -m 'Add downloadable full report and meeting deck'
+            git push
+          fi
