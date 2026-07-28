@@ -1,0 +1,16 @@
+Inflection Radar discussion deck
+
+Narrative and claims are derived from the accompanying Inflection Radar internal
+report and the public-source capability review described in that report.
+
+Primary public-source families used by the package:
+- Real Chemistry public materials: https://www.realchemistry.com/
+- U.S. SEC EDGAR: https://www.sec.gov/edgar/search/
+- U.S. FDA: https://www.fda.gov/
+- ClinicalTrials.gov: https://clinicaltrials.gov/
+- USPTO: https://www.uspto.gov/
+- PubMed: https://pubmed.ncbi.nlm.nih.gov/
+- Crossref: https://www.crossref.org/
+
+No externally sourced raster images are used. All visible elements are editable
+PowerPoint-native text and geometric shapes.
