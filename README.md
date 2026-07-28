@@ -1,6 +1,20 @@
 # Inflection Radar
 
-Private, unlisted decision brief for Real Chemistry. Public-source research only. No internal or client-confidential information.
+Interactive public-source decision room for the Real Chemistry Pilot 1 proposal.
 
-## Deployment
-Static site prepared for Vercel.
+## Live site
+
+The repository is connected to Vercel. Every push to `main` triggers a production rebuild.
+
+## Current structure
+
+- `index.html` — interactive decision room
+- `assets/` — downloadable executive brief, full report, meeting deck, and future research registers
+
+## Information boundary
+
+This repository is public. Commit only public-source research and proposal materials. Do not commit future Real Chemistry internal, client-confidential, licensed, or restricted information here. Any later internally calibrated phase should use a separate protected workspace and repository.
+
+## Prepared by
+
+Rayven-Nikkita Collins (RN)
