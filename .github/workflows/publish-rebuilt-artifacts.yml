@@ -1,0 +1,39 @@
+name: Publish rebuilt Inflection Radar artifacts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.publish/**'
+      - '.github/workflows/publish-rebuilt-artifacts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Decode exact artifacts
+        shell: bash
+        run: |
+          base64 --decode .publish/executive-brief.pdf.b64 > assets/executive-brief.pdf
+          base64 --decode .publish/full-report.pdf.b64 > assets/full-report.pdf
+          base64 --decode .publish/meeting-deck.pptx.b64 > assets/meeting-deck.pptx
+      - name: Verify checksums
+        shell: bash
+        run: |
+          echo '6087695673d708b88b958315ddfd0961fb0c43462dec424673ab2fca89e39052  assets/executive-brief.pdf' | sha256sum --check
+          echo '81fceaf558f92c3656ab3bccd7478079d81f6cd90e0f7386af0c9c5405dcb015  assets/full-report.pdf' | sha256sum --check
+          echo '3d1f2339419d9fdb7851ac3b39f16d783426c1137ef7b66e27aa72f5dc6fb15c  assets/meeting-deck.pptx' | sha256sum --check
+      - name: Commit rebuilt artifacts
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/executive-brief.pdf assets/full-report.pdf assets/meeting-deck.pptx
+          git diff --cached --quiet && exit 0
+          git commit -m 'Publish rebuilt Inflection Radar artifacts'
+          git push
