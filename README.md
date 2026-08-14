@@ -2,6 +2,8 @@
 
 Interactive public-source decision room for the Real Chemistry Pilot 1 proposal.
 
+This is an independently initiated proposal by RN Collins. It was not commissioned, authorized, reviewed, approved, endorsed, or adopted by Real Chemistry. The displayed timeline, research universe, account portfolio, and governance workflow are proposed scope—not completed pilot results.
+
 ## Live site
 
 The repository is connected to Vercel. Every push to `main` triggers a production rebuild.
